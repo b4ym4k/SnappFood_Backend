@@ -1,0 +1,10 @@
+go mod init root
+go mod tidy
+go get -u github.com/gin-gonic/gin
+
+go get -u github.com/swaggo/swag/cmd/swag
+swag init
+swag init -g http/api.go
+go get -u github.com/swaggo/gin-swagger
+go get -u github.com/swaggo/files
+go mod download github.com/alecthomas/template
