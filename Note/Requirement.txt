@@ -7,4 +7,13 @@ swag init
 swag init -g http/api.go
 go get -u github.com/swaggo/gin-swagger
 go get -u github.com/swaggo/files
+---------------------------------------------------- Start More
 go mod download github.com/alecthomas/template
+go get github.com/gorilla/websocket
+go get github.com/gorilla/mux
+go get github.com/dgrijalva/jwt-go
+go mod download github.com/cpuguy83/go-md2man/v2
+go get -u github.com/gofiber/fiber/v2
+----------------------------------------------------Finish More
+go get -u github.com/gofiber/fiber/v2
+go get github.com/gofiber/websocket/v2
