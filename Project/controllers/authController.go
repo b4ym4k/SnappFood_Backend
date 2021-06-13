@@ -3,6 +3,7 @@ package controllers
 import (
 	"github.com/gofiber/fiber/v2"
 	"golang.org/x/crypto/bcrypt"
+	"root/database"
 	"root/models"
 )
 
@@ -17,14 +18,15 @@ func Register(c *fiber.Ctx) error {
 		return err
 	}
 
-	password, _ :=bcrypt.GenerateFromPassword([]byte(data["password"]),14)
-
+	password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
 
 	user := models.User{
 		Name:     data["name"],
 		Email:    data["email"],
 		Password: password, //data["password"],
 	}
+
+	database.DB.Create(&user)
 
 	return c.JSON(user)
 }

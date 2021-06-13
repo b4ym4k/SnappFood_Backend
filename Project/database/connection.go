@@ -6,12 +6,15 @@ import (
 	"root/models"
 )
 
+var DB *gorm.DB
+
 func Connect() {
 	//db
-	db, err := gorm.Open(mysql.Open("root:rootroot@/snapfood_go_auth"), &gorm.Config{})
+	Connection, err := gorm.Open(mysql.Open("root:rootroot@/snapfood_go_auth"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
 
-	db.AutoMigrate(&models.User{})
+	DB = Connection
+	Connection.AutoMigrate(&models.User{})
 }
