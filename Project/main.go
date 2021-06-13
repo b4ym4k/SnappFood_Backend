@@ -2,22 +2,19 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
 	"log"
+	"root/database"
+	"root/routes"
 )
 
 func main() {
 	//db
-	_, err := gorm.Open(mysql.Open("root:rootroot@/snapfood_go_auth"), &gorm.Config{})
-	if err != nil {
-		panic("failed to connect database")
-	}
+	database.Connect()
+
 	app := fiber.New()
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
-	})
+	//routes
+	routes.Setup(app)
 
 	log.Fatal(app.Listen(":8080"))
 }
