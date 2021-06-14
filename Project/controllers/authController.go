@@ -79,6 +79,18 @@ func Login(c *fiber.Ctx) error {
 		})
 	}
 
+	//cookie
+	cookie := fiber.Cookie{
+		Name:     "jwt",
+		Value:    token,
+		Expires:  time.Now().Add(time.Hour * 24),
+		HTTPOnly: true,
+	}
+
+	c.Cookie(&cookie)
+
 	//succesfully entered email & pass
-	return c.JSON(token)
+	return c.JSON(fiber.Map{
+		"message": "success",
+	})
 }

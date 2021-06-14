@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"log"
 	"root/database"
 	"root/routes"
@@ -13,6 +14,11 @@ func main() {
 	database.Connect()
 
 	app := fiber.New()
+
+	//ignore differance between front/back end port
+	app.Use(cors.New(cors.Config{
+		AllowCredentials: true,
+	}))
 
 	//routes
 	routes.Setup(app)
