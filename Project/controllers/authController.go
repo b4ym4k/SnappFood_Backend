@@ -1,12 +1,17 @@
 package controllers
 
 import (
+	"github.com/dgrijalva/jwt-go"
 	"root/database"
 	"root/models"
+	"strconv"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
 	"golang.org/x/crypto/bcrypt"
 )
+
+const SecretKey = "secret"
 
 func Register(c *fiber.Ctx) error {
 	var data map[string]string
@@ -59,6 +64,21 @@ func Login(c *fiber.Ctx) error {
 		})
 	}
 
+	//return jwt token
+	claims := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.StandardClaims{
+		Issuer:    strconv.Itoa(int(user.ID)),
+		ExpiresAt: time.Now().Add(time.Hour * 24).Unix(), //1 day
+	})
+
+	token, err := claims.SignedString([]byte(SecretKey))
+
+	if err != nil {
+		c.Status(fiber.StatusInternalServerError)
+		return c.JSON(fiber.Map{
+			"message": "could not login",
+		})
+	}
+
 	//succesfully entered email & pass
-	return c.JSON(user)
+	return c.JSON(token)
 }

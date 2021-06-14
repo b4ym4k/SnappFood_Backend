@@ -19,3 +19,5 @@ go get -u github.com/gofiber/fiber/v2
 go get github.com/gofiber/websocket/v2
 
 go get golang.org/x/crypto/bcrypt
+
+go get github.com/dgrijalva/jwt-go
