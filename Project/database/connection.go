@@ -1,10 +1,9 @@
 package database
 
 import (
-	"root/models"
-
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"root/models"
 )
 
 var DB *gorm.DB
