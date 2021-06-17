@@ -18,8 +18,15 @@ func Setup(app *fiber.App) {
 	//managerController
 	app.Post("/api/manager/createFood", controllers.ManagerCreateFood)   //not implemented
 	app.Delete("/api/manager/deleteFood", controllers.ManagerDeleteFood) //not implemented
-	app.Delete("/api/manager/UpdateFood", controllers.ManagerUpdateFood) //not implemented
-	app.Post("/api/manager/comment", controllers.ManagerCommect)         //not implemented
+	app.Put("/api/manager/updateFood", controllers.ManagerUpdateFood)    //not implemented
+	app.Post("/api/manager/comment", controllers.ManagerComment)         //not implemented
+
+	//managerOrderController
+	app.Put("/api/manager/checkOrder", controllers.ManagerCheckOrder)                        //not implemented
+	app.Get("/api/manager/findNameAndDistrictById/:id", controllers.FindNameAndDistrictById) //not implemented
+	app.Get("/api/manager/orders/:id", controllers.GetOrders)                                //not implemented
+	app.Get("/api/manager/foods/:id", controllers.GetManagerFoods)                           //not implemented
+	app.Get("/api/manager/comment/:id", controllers.GetCommects)                             //not implemented
 
 	//==================User==================================================
 

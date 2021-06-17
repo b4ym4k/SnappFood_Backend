@@ -16,6 +16,6 @@ func ManagerUpdateFood(c *fiber.Ctx) error {
 	return c.JSON()
 }
 
-func ManagerCommect(c *fiber.Ctx) error {
+func ManagerComment(c *fiber.Ctx) error {
 	return c.JSON()
 }
