@@ -28,8 +28,10 @@ func ManagerRegister(c *fiber.Ctx) error {
 	password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
 
 	manager := models.Manager{
-		Name:     data["name"],
-		Email:    data["email"],
+		Name:  data["name"],
+		Email: data["email"],
+		//Region:   data["region"],
+		Address:  data["address"],
 		Password: password, //data["password"],
 	}
 
@@ -153,8 +155,10 @@ func UserRegister(c *fiber.Ctx) error {
 
 	user := models.User{
 		Name:        data["name"],
-		PhoneNumber: data["phonenumber"],
-		Password:    password, //data["password"],
+		PhoneNumber: data["phoneNumber"],
+		Address:     data["address"],
+		//Credit:      int["Credit"],
+		Password: password, //data["password"],
 	}
 
 	database.DB.Create(&user)
@@ -171,7 +175,7 @@ func UserLogin(c *fiber.Ctx) error {
 	}
 
 	var user models.User
-	database.DB.Where("phonenumber = ?", data["phonenumber"]).First(&user)
+	database.DB.Where("phone_number = ?", data["phoneNumber"]).First(&user)
 
 	//user doesn't exist
 	if user.ID == 0 {
@@ -239,7 +243,7 @@ func UserUser(c *fiber.Ctx) error {
 	//claims to pointer of standard claims
 	claims := token.Claims.(*jwt.StandardClaims)
 
-	var user models.Manager
+	var user models.User
 
 	database.DB.Where("id = ?", claims.Issuer).First(&user)
 
