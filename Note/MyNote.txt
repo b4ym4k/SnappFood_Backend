@@ -4,3 +4,55 @@ Module:
 - Vandor
 - Shopping
 - Delivery
+====================================
+user: 
+1- phoneNumber: number
+2- password: string
+3- name: string
+4- region: enum
+5- address: string
+6- credit: number
+7- id: string
+8- favourite food ids : array
+9- order history : array
+====================================
+manager:
+1- email: email
+2- password: string
+3- name (resturant): string
+4- region: enum
+5- address: string
+6- service regions: array of enum
+7- working hours: array
+8- delivery time
+9- delivery cost
+10- food list: array
+11- order list
+12- comment list
+====================================
+food: 
+1-name: string
+2- price: number
+3- isReady: boolean
+4- resturant id
+6- rate
+7- total comments
+====================================
+comment: 
+1- id
+2- rate
+3- text
+4- date
+5- food id
+====================================
+order:
+1- id
+2- resturant id
+3- user id
+4- food list
+5- delivery time (optional)
+6- delivery cost (optional)
+7- price
+8-status (waiting, preparing, delivered , ...)
+9- comment list
+====================================
