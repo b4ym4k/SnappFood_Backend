@@ -37,4 +37,12 @@ func Setup(app *fiber.App) {
 	app.Post("/api/user/logout", controllers.UserLogout)
 	app.Put("/api/manager/updateProfile", controllers.UserUpdateProfile) //not implemented
 
+	//userController
+	app.Post("/api/user/allFood", controllers.UserGetAllFood)     //not implemented
+	app.Get("/api/user/getOrders/:id", controllers.UserGetOrders) //not implemented
+	app.Post("/api/user/order", controllers.UserCreateOrder)      //not implemented
+	app.Post("/api/user/history", controllers.UserGetHistory)     //not implemented
+	app.Post("/api/user/favorites", controllers.UserGetFavorites) //not implemented
+	app.Post("/api/user/comment", controllers.UserCreateComment)  //not implemented
+
 }
