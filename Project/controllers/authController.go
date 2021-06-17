@@ -12,7 +12,7 @@ import (
 
 const SecretKey = "secret"
 
-func Register(c *fiber.Ctx) error {
+func ManagerRegister(c *fiber.Ctx) error {
 	var data map[string]string
 
 	//err:=c.BodyParser(&data)
@@ -25,7 +25,7 @@ func Register(c *fiber.Ctx) error {
 
 	password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
 
-	user := models.User{
+	user := models.Manager{
 		Name:     data["name"],
 		Email:    data["email"],
 		Password: password, //data["password"],
@@ -36,7 +36,7 @@ func Register(c *fiber.Ctx) error {
 	return c.JSON(user)
 }
 
-func Login(c *fiber.Ctx) error {
+func ManagerLogin(c *fiber.Ctx) error {
 	var data map[string]string
 
 	err := c.BodyParser(&data)
@@ -44,7 +44,7 @@ func Login(c *fiber.Ctx) error {
 		return err
 	}
 
-	var user models.User
+	var user models.Manager
 	database.DB.Where("email = ?", data["email"]).First(&user)
 
 	//user doesn't exist
@@ -94,7 +94,7 @@ func Login(c *fiber.Ctx) error {
 	})
 }
 
-func User(c *fiber.Ctx) error {
+func ManagerUser(c *fiber.Ctx) error {
 	//get cookie
 	cookie := c.Cookies("jwt")
 
@@ -114,7 +114,7 @@ func User(c *fiber.Ctx) error {
 	//claims to pointer of standard claims
 	claims := token.Claims.(*jwt.StandardClaims)
 
-	var user models.User
+	var user models.Manager
 
 	database.DB.Where("id = ?", claims.Issuer).First(&user)
 
@@ -122,7 +122,7 @@ func User(c *fiber.Ctx) error {
 	//return c.JSON(claims)
 }
 
-func Logout(c *fiber.Ctx) error {
+func ManagerLogout(c *fiber.Ctx) error {
 	//just remove cookie
 	cookie := fiber.Cookie{
 		Name:     "jwt",
