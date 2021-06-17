@@ -142,6 +142,10 @@ func ManagerLogout(c *fiber.Ctx) error {
 	})
 }
 
+func ManagerUpdateProfile(c *fiber.Ctx) error {
+	return c.JSON()
+}
+
 //==================User=====================
 
 func UserRegister(c *fiber.Ctx) error {
@@ -265,4 +269,8 @@ func UserLogout(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{
 		"message": "success",
 	})
+}
+
+func UserUpdateProfile(c *fiber.Ctx) error {
+	return c.JSON()
 }
