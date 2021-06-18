@@ -143,7 +143,8 @@ func ManagerLogout(c *fiber.Ctx) error {
 }
 
 func ManagerUpdateProfile(c *fiber.Ctx) error {
-	return c.JSON()
+	var user models.User
+	return c.JSON(user)
 }
 
 //==================User=====================
@@ -272,5 +273,6 @@ func UserLogout(c *fiber.Ctx) error {
 }
 
 func UserUpdateProfile(c *fiber.Ctx) error {
-	return c.JSON()
+	var user models.User
+	return c.JSON(user)
 }
