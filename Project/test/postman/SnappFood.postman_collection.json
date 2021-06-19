@@ -121,6 +121,39 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8080/api/manager/updateProfile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Kamyab\",\r\n    \"email\": \"kamyababedi@gmail.com\",\r\n    \"region\": \"district2\",\r\n    \"address\": \"1th sadeghiyeh square\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/manager/updateProfile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"manager",
+								"updateProfile"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -236,6 +269,39 @@
 								"api",
 								"user",
 								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8080/api/user/updateProfile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Kamyab\",\r\n    \"phoneNumber\": \"09912775711\",\r\n    \"region\": \"district2\",\r\n    \"address\": \"sadeghiyeh square\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/user/updateProfile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"updateProfile"
 							]
 						}
 					},
