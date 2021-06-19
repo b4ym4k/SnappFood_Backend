@@ -313,6 +313,44 @@ func UserLogout(c *fiber.Ctx) error {
 }
 
 func UserUpdateProfile(c *fiber.Ctx) error {
-	var user models.User
+	var data map[string]string
+
+	if err := c.BodyParser(&data); err != nil {
+		return err
+	}
+
+	//get cookie
+	cookie := c.Cookies("jwt")
+
+	token, err := jwt.ParseWithClaims(cookie, &jwt.StandardClaims{}, func(token *jwt.Token) (interface{}, error) {
+		return []byte(SecretKey), nil
+	})
+
+	//user is not login
+	if err != nil {
+		c.Status(fiber.StatusUnauthorized)
+		return c.JSON(fiber.Map{
+			"message": "unauthenticated",
+		})
+	}
+
+	//claims to pointer of standard claims
+	claims := token.Claims.(*jwt.StandardClaims)
+
+	//var manager models.Manager
+
+	user := models.User{
+		Name:        data["name"],
+		PhoneNumber: data["email"],
+		Region:      data["region"],
+		Address:     data["address"],
+	}
+
+	//database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("region", time.Now())
+
+	database.DB.Where("id = ?", claims.Issuer).Model(&user).Update("name", user.Name)
+	database.DB.Where("id = ?", claims.Issuer).Model(&user).Update("email", user.PhoneNumber)
+	database.DB.Where("id = ?", claims.Issuer).Model(&user).Update("region", user.Region)
+	database.DB.Where("id = ?", claims.Issuer).Model(&user).Update("address", user.Address)
 	return c.JSON(user)
 }
