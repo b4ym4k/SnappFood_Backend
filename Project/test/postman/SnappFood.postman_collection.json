@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"Kamyab\",\r\n    \"email\": \"kamyababedi@gmail.com\",\r\n    \"address\": \"sadeghiyeh square\",\r\n    \"password\" : \"admin\"\r\n}",
+							"raw": "{\r\n    \"name\" : \"Kamyab\",\r\n    \"email\": \"kamyababedi@gmail.com\",\r\n    \"region\": \"district2\",\r\n    \"address\": \"1th sadeghiyeh square\",\r\n    \"password\" : \"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -134,7 +134,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"Kamyab\",\r\n    \"phoneNumber\": \"09912775711\",\r\n    \"address\": \"sadeghiyeh square\",\r\n    \"credit\": \"10000\",\r\n    \"password\" : \"admin\"\r\n}",
+							"raw": "{\r\n    \"name\" : \"Kamyab\",\r\n    \"phoneNumber\": \"09912775711\",\r\n    \"region\": \"district2\",\r\n    \"address\": \"sadeghiyeh square\",\r\n    \"credit\": \"0\",\r\n    \"password\" : \"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

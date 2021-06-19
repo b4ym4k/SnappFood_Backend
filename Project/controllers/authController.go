@@ -28,9 +28,9 @@ func ManagerRegister(c *fiber.Ctx) error {
 	password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
 
 	manager := models.Manager{
-		Name:  data["name"],
-		Email: data["email"],
-		//Region:   data["region"],
+		Name:     data["name"],
+		Email:    data["email"],
+		Region:   data["region"],
 		Address:  data["address"],
 		Password: password, //data["password"],
 	}
@@ -157,13 +157,14 @@ func UserRegister(c *fiber.Ctx) error {
 	}
 
 	password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
-
+	credit := 100
 	user := models.User{
 		Name:        data["name"],
 		PhoneNumber: data["phoneNumber"],
+		Region:      data["region"],
 		Address:     data["address"],
-		//Credit:      int["Credit"],
-		Password: password, //data["password"],
+		Credit: uint(credit),
+		Password:    password, //data["password"],
 	}
 
 	database.DB.Create(&user)
