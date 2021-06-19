@@ -10,6 +10,8 @@ var DB *gorm.DB
 
 func Connect() {
 	//db
+	//mysqlUser:="root"
+	//mysqlPass:="rootroot"
 	Connection, err := gorm.Open(mysql.Open("root:rootroot@/snapfood_go_auth"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")

@@ -13,7 +13,7 @@ func Setup(app *fiber.App) {
 	app.Post("/api/manager/login", controllers.ManagerLogin)
 	app.Get("/api/manager/user", controllers.ManagerUser)
 	app.Post("/api/manager/logout", controllers.ManagerLogout)
-	app.Put("/api/manager/updateProfile", controllers.ManagerUpdateProfile) //not implemented
+	app.Put("/api/manager/updateProfile", controllers.ManagerUpdateProfile)
 
 	//managerController
 	app.Post("/api/manager/createFood", controllers.ManagerCreateFood)   //not implemented
