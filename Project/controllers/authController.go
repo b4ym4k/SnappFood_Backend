@@ -28,10 +28,10 @@ func ManagerRegister(c *fiber.Ctx) error {
 	password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
 
 	manager := models.Manager{
-		Name:     data["name"],
-		Email:    data["email"],
-		Region:   data["region"],
-		Address:  data["address"],
+		Name:  data["name"],
+		Email: data["email"],
+		//Region:   data["region"],
+		//Address:  data["address"],
 		Password: password, //data["password"],
 	}
 
@@ -170,18 +170,18 @@ func ManagerUpdateProfile(c *fiber.Ctx) error {
 	//var manager models.Manager
 
 	manager := models.Manager{
-		Name:    data["name"],
-		Email:   data["email"],
-		Region:  data["region"],
-		Address: data["address"],
+		Name:  data["name"],
+		Email: data["email"],
+		//Region:  data["region"],
+		//Address: data["address"],
 	}
 
 	//database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("region", time.Now())
 
 	database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("name", manager.Name)
 	database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("email", manager.Email)
-	database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("region", manager.Region)
-	database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("address", manager.Address)
+	//database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("region", manager.Region)
+	//database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("address", manager.Address)
 	return c.JSON(manager)
 
 }
