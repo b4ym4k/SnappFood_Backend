@@ -16,7 +16,7 @@ const SecretKey = "secret"
 
 func ManagerRegister(c *fiber.Ctx) error {
 	var data map[string]string
-	var data2:=date
+
 	//err:=c.BodyParser(&data)
 	//if err != nil {
 	//	return err
@@ -30,19 +30,12 @@ func ManagerRegister(c *fiber.Ctx) error {
 	manager := models.Manager{
 		Name:     data["name"],
 		Email:    data["email"],
-		Password: password, //data["password"],
-	}
-	database.DB.Create(&manager)
-
-	restaurant := models.Restaurant{
-		RestaurantName: data["restaurantName"],
-		Manager: manager,
 		Region:   data["region"],
 		Address:  data["address"],
-		LastUpdated: data["last_updated"],
+		Password: password, //data["password"],
 	}
 
-	database.DB.Create(&restaurant)
+	database.DB.Create(&manager)
 
 	return c.JSON(manager)
 }
@@ -179,16 +172,16 @@ func ManagerUpdateProfile(c *fiber.Ctx) error {
 	manager := models.Manager{
 		Name:    data["name"],
 		Email:   data["email"],
-		//Region:  data["region"],
-		//Address: data["address"],
+		Region:  data["region"],
+		Address: data["address"],
 	}
 
 	//database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("region", time.Now())
 
 	database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("name", manager.Name)
 	database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("email", manager.Email)
-	//database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("region", manager.Region)
-	//database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("address", manager.Address)
+	database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("region", manager.Region)
+	database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("address", manager.Address)
 	return c.JSON(manager)
 
 }
