@@ -3,7 +3,7 @@ package models
 import "gorm.io/gorm"
 
 type Manager struct {
-	ID           uint   `json:"id,omitempty"`
+	ID           uint   `gorm:"primaryKey" json:"id,omitempty"`
 	Name         string `json:"name,omitempty"`
 	Email        string `gorm:"unique" json:"email,omitempty"`
 	Password     []byte `json:"-"`
@@ -12,7 +12,7 @@ type Manager struct {
 }
 
 type User struct {
-	ID          uint   `json:"id,omitempty"`
+	ID          uint   `gorm:"primaryKey" json:"id,omitempty"`
 	Name        string `json:"name,omitempty"`
 	PhoneNumber string `gorm:"unique" json:"phoneNumber,omitempty"`
 	Region      string `json:"region,omitempty"` //region: enum

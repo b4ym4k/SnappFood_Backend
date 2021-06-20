@@ -3,7 +3,7 @@ package models
 import "gorm.io/gorm"
 
 type Food struct {
-	ID           uint   `json:"id,omitempty"`
+	ID           uint   `gorm:"primaryKey" json:"id,omitempty"`
 	Name         string `json:"name,omitempty"`
 	Price        int    `json:"price,omitempty"`
 	Ready        bool   `json:"isReady,omitempty"`
