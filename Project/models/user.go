@@ -1,11 +1,9 @@
 package models
 
 type Manager struct {
-	ID    uint   `json:"id,omitempty"`
-	Name  string `json:"name,omitempty"`
-	Email string `gorm:"unique" json:"email,omitempty"`
-	//Region   string    `json:"region,omitempty"` //region: enum
-	//Address  string    `json:"address,omitempty"`
+	ID       uint   `json:"id,omitempty"`
+	Name     string `json:"name,omitempty"`
+	Email    string `gorm:"unique" json:"email,omitempty"`
 	Password []byte `json:"-"`
 }
 
