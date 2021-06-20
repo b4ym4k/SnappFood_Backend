@@ -18,5 +18,5 @@ func Connect() {
 	}
 
 	DB = Connection
-	Connection.AutoMigrate(&models.Manager{}, &models.User{})
+	Connection.AutoMigrate(&models.Manager{}, &models.User{}, &models.Food{}, &models.Restaurant{})
 }
