@@ -10,7 +10,7 @@ require (
 	github.com/go-openapi/spec v0.20.3 // indirect
 	github.com/go-openapi/swag v0.19.15 // indirect
 	github.com/gofiber/fiber v1.14.6
-	github.com/gofiber/fiber/v2 v2.12.0
+	github.com/gofiber/fiber/v2 v2.13.0
 	github.com/klauspost/compress v1.13.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-isatty v0.0.13 // indirect

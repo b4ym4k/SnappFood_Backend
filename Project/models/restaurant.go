@@ -9,6 +9,6 @@ type Restaurant struct {
 	Region         string  `json:"region,omitempty"` //region: enum
 	Address        string  `json:"address,omitempty"`
 	Balance        float64 `json:"balance,omitempty"`
-	//Food           []Food  `json:"food,omitempty"`
+	Food           []Food  `json:"food,omitempty"`
 	gorm.Model
 }

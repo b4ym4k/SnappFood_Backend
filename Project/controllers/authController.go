@@ -15,29 +15,53 @@ const SecretKey = "secret"
 //==================Manager=====================
 
 func ManagerRegister(c *fiber.Ctx) error {
+
 	var data map[string]string
 
-	//err:=c.BodyParser(&data)
-	//if err != nil {
-	//	return err
-	//}
 	if err := c.BodyParser(&data); err != nil {
 		return err
 	}
 
-	password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
+			password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
 
-	manager := models.Manager{
-		Name:  data["name"],
-		Email: data["email"],
-		//Region:   data["region"],
-		//Address:  data["address"],
-		Password: password, //data["password"],
-	}
+			manager := models.Manager{
+				Name:  data["name"],
+				Email: data["email"],
+				//Region:   data["region"],
+				//Address:  data["address"],
+				Password: password, //data["password"],
+			}
+			database.DB.Create(&manager)
 
-	database.DB.Create(&manager)
+			restaurant := models.Restaurant{
+				RestaurantName: data["restaurantName"],
+				Manager:       manager,
+				Region:        data["region"],
+				Address:       data["address"],
+				Balance:       0,
+			}
+			database.DB.Create(&restaurant)
 
-	return c.JSON(manager)
+		return c.JSON(restaurant)
+		//return c.JSON(restaurant)
+	//var data map[string]string
+	//
+	//if err := c.BodyParser(&data); err != nil {
+	//	return err
+	//}
+	//
+	//password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
+	//
+	//manager := models.Manager{
+	//	Name:  data["name"],
+	//	Email: data["email"],
+	//	//Region:   data["region"],
+	//	//Address:  data["address"],
+	//	Password: password, //data["password"],
+	//}
+
+	//database.DB.Create(&manager)
+	//return c.JSON(manager)
 }
 
 func ManagerLogin(c *fiber.Ctx) error {
