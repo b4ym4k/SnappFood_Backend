@@ -4,11 +4,11 @@ import "gorm.io/gorm"
 
 type Restaurant struct {
 	ID             uint    `gorm:"primaryKey" json:"id,omitempty"`
-	RestaurantName string  `json:"restaurantName,omitempty"`
-	Manager        Manager `gorm:"foreignKey:ID"`
-	Region         string  `json:"region,omitempty"` //region: enum
+	RestaurantName string  `gorm:"not null" json:"restaurantName,omitempty"`
+	Region         string  `gorm:"not null" json:"region,omitempty"` //region: enum
 	Address        string  `json:"address,omitempty"`
 	Balance        float64 `json:"balance,omitempty"`
-	Food           []Food  `json:"food,omitempty"`
+	ManagerID      int     `gorm:"primaryKey; not null" json:"managerID,omitempty"`
+	//Food           []Food  `json:"food,omitempty"`
 	gorm.Model
 }

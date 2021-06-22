@@ -15,53 +15,41 @@ const SecretKey = "secret"
 //==================Manager=====================
 
 func ManagerRegister(c *fiber.Ctx) error {
-
 	var data map[string]string
+	//var data2 map[string]string
 
+	//err:=c.BodyParser(&data)
+	//if err != nil {
+	//	return err
+	//}
 	if err := c.BodyParser(&data); err != nil {
 		return err
 	}
 
-			password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
+	password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
 
-			manager := models.Manager{
-				Name:  data["name"],
-				Email: data["email"],
-				//Region:   data["region"],
-				//Address:  data["address"],
-				Password: password, //data["password"],
-			}
-			database.DB.Create(&manager)
-
-			restaurant := models.Restaurant{
+	manager := models.Manager{
+		Name:     data["name"],
+		Email:    data["email"],
+		Password: password, //data["password"],
+		Restaurant: []models.Restaurant{
+			models.Restaurant{
 				RestaurantName: data["restaurantName"],
-				Manager:       manager,
-				Region:        data["region"],
-				Address:       data["address"],
-				Balance:       0,
-			}
-			database.DB.Create(&restaurant)
+				Region:         data["region"],
+				Address:        data["address"],
+			},
+		},
+	}
+	database.DB.Create(&manager)
 
-		return c.JSON(restaurant)
-		//return c.JSON(restaurant)
-	//var data map[string]string
-	//
-	//if err := c.BodyParser(&data); err != nil {
-	//	return err
+	//restaurant := models.Restaurant{
+	//	RestaurantName: data2["restaurantName"],
+	//	Region: data2["region"],
+	//	Address: data2["address"],
 	//}
-	//
-	//password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
-	//
-	//manager := models.Manager{
-	//	Name:  data["name"],
-	//	Email: data["email"],
-	//	//Region:   data["region"],
-	//	//Address:  data["address"],
-	//	Password: password, //data["password"],
-	//}
+	//database.DB.Create(&restaurant)
 
-	//database.DB.Create(&manager)
-	//return c.JSON(manager)
+	return c.JSON(manager)
 }
 
 func ManagerLogin(c *fiber.Ctx) error {
@@ -193,20 +181,19 @@ func ManagerUpdateProfile(c *fiber.Ctx) error {
 
 	//var manager models.Manager
 
-	manager := models.Manager{
-		Name:  data["name"],
-		Email: data["email"],
-		//Region:  data["region"],
-		//Address: data["address"],
+	restaurant := models.Restaurant{
+		RestaurantName: data["name"],
+		Region:         data["region"],
+		Address:        data["address"],
 	}
 
 	//database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("region", time.Now())
 
-	database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("name", manager.Name)
-	database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("email", manager.Email)
-	//database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("region", manager.Region)
-	//database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("address", manager.Address)
-	return c.JSON(manager)
+	database.DB.Where("id = ?", claims.Issuer).Model(&restaurant).Update("name", restaurant.RestaurantName)
+	//database.DB.Where("id = ?", claims.Issuer).Model(&restaurant).Update("email", restaurant.Email)
+	database.DB.Where("id = ?", claims.Issuer).Model(&restaurant).Update("region", restaurant.Region)
+	database.DB.Where("id = ?", claims.Issuer).Model(&restaurant).Update("address", restaurant.Address)
+	return c.JSON(restaurant)
 
 }
 
