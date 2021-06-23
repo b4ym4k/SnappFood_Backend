@@ -16,7 +16,7 @@ func Setup(app *fiber.App) {
 	app.Put("/api/manager/updateProfile", controllers.ManagerUpdateProfile)
 
 	//managerController
-	app.Post("/api/manager/createFood", controllers.ManagerCreateFood)   //not implemented
+	app.Post("/api/manager/createFood", controllers.ManagerCreateFood)
 	app.Delete("/api/manager/deleteFood", controllers.ManagerDeleteFood) //not implemented
 	app.Put("/api/manager/updateFood", controllers.ManagerUpdateFood)    //not implemented
 	app.Post("/api/manager/comment", controllers.ManagerComment)         //not implemented
