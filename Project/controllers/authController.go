@@ -42,13 +42,6 @@ func ManagerRegister(c *fiber.Ctx) error {
 	}
 	database.DB.Create(&manager)
 
-	//restaurant := models.Restaurant{
-	//	RestaurantName: data2["restaurantName"],
-	//	Region: data2["region"],
-	//	Address: data2["address"],
-	//}
-	//database.DB.Create(&restaurant)
-
 	return c.JSON(manager)
 }
 
@@ -182,17 +175,17 @@ func ManagerUpdateProfile(c *fiber.Ctx) error {
 	//var manager models.Manager
 
 	restaurant := models.Restaurant{
-		RestaurantName: data["name"],
+		RestaurantName: data["restaurantName"],
 		Region:         data["region"],
 		Address:        data["address"],
 	}
 
 	//database.DB.Where("id = ?", claims.Issuer).Model(&manager).Update("region", time.Now())
 
-	database.DB.Where("id = ?", claims.Issuer).Model(&restaurant).Update("name", restaurant.RestaurantName)
+	database.DB.Where("manager_id = ?", claims.Issuer).Model(&restaurant).Update("restaurant_name", restaurant.RestaurantName)
 	//database.DB.Where("id = ?", claims.Issuer).Model(&restaurant).Update("email", restaurant.Email)
-	database.DB.Where("id = ?", claims.Issuer).Model(&restaurant).Update("region", restaurant.Region)
-	database.DB.Where("id = ?", claims.Issuer).Model(&restaurant).Update("address", restaurant.Address)
+	database.DB.Where("manager_id = ?", claims.Issuer).Model(&restaurant).Update("region", restaurant.Region)
+	database.DB.Where("manager_id = ?", claims.Issuer).Model(&restaurant).Update("address", restaurant.Address)
 	return c.JSON(restaurant)
 
 }
