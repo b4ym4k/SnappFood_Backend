@@ -37,8 +37,8 @@ func ManagerCreateFood(c *fiber.Ctx) error {
 	restaurant := models.Restaurant{
 		Food: []models.Food{
 			models.Food{
-				Name:  data["restaurantName"],
-				Price: data["price"],
+				FoodName: data["foodName"],
+				Price:    data["price"],
 			},
 		},
 	}
