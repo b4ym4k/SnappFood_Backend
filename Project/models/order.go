@@ -4,15 +4,15 @@ import "gorm.io/gorm"
 
 type Order struct {
 	gorm.Model
-	Status     string
-	OrderItems []OrderItem
+	Status string
+	//OrderItems []OrderItem
 }
 
 type OrderItem struct {
 	gorm.Model
-	OrderID  uint
-	ItemID   uint
-	Item     Item
+	OrderID uint
+	ItemID  uint
+	//Item     Item
 	Quantity int
 }
 

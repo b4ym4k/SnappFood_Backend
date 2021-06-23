@@ -50,7 +50,7 @@ func UserCreateOrder(c *fiber.Ctx) error {
 	defer rows.Close()
 	// Values to load into
 	newOrder := &models.Order{}
-	newOrder.OrderItems = make([]models.OrderItem, 0)
+	//newOrder.OrderItems = make([]models.OrderItem, 0)
 
 	for rows.Next() {
 		orderItem := models.OrderItem{}
@@ -59,8 +59,8 @@ func UserCreateOrder(c *fiber.Ctx) error {
 		if err != nil {
 			log.Panic(err)
 		}
-		orderItem.Item = item
-		newOrder.OrderItems = append(newOrder.OrderItems, orderItem)
+		//orderItem.Item = item
+		//newOrder.OrderItems = append(newOrder.OrderItems, orderItem)
 	}
 	return c.JSON(order)
 }

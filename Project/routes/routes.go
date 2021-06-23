@@ -17,16 +17,16 @@ func Setup(app *fiber.App) {
 
 	//managerController
 	app.Post("/api/manager/createFood", controllers.ManagerCreateFood)
-	app.Delete("/api/manager/deleteFood", controllers.ManagerDeleteFood) //not implemented
-	app.Put("/api/manager/updateFood", controllers.ManagerUpdateFood)    //not implemented
-	app.Post("/api/manager/comment", controllers.ManagerComment)         //not implemented
+	app.Delete("/api/manager/deleteFood", controllers.ManagerDeleteFood)
+	app.Put("/api/manager/updateFood", controllers.ManagerUpdateFood)
+	app.Post("/api/manager/comment", controllers.ManagerComment)
 
 	//managerOrderController
-	app.Put("/api/manager/checkOrder", controllers.ManagerCheckOrder)                        //not implemented
-	app.Get("/api/manager/findNameAndDistrictById/:id", controllers.FindNameAndDistrictById) //not implemented
-	app.Get("/api/manager/orders/:id", controllers.GetOrders)                                //not implemented
-	app.Get("/api/manager/foods/:id", controllers.GetManagerFoods)                           //not implemented
-	app.Get("/api/manager/comment/:id", controllers.GetCommects)                             //not implemented
+	app.Put("/api/manager/checkOrder", controllers.ManagerCheckOrder)
+	app.Get("/api/manager/findNameAndDistrictById/:id", controllers.FindNameAndDistrictById)
+	app.Get("/api/manager/orders/:id", controllers.GetOrders)
+	app.Get("/api/manager/foods/:id", controllers.GetManagerFoods)
+	app.Get("/api/manager/comment/:id", controllers.GetCommects)
 
 	//==================User==================================================
 
@@ -38,11 +38,11 @@ func Setup(app *fiber.App) {
 	app.Put("/api/user/updateProfile", controllers.UserUpdateProfile)
 
 	//userController
-	app.Post("/api/user/allFood", controllers.UserGetAllFood)     //not implemented
-	app.Get("/api/user/getOrders/:id", controllers.UserGetOrders) //not implemented
-	app.Post("/api/user/order", controllers.UserCreateOrder)      //not implemented
-	app.Post("/api/user/history", controllers.UserGetHistory)     //not implemented
-	app.Post("/api/user/favorites", controllers.UserGetFavorites) //not implemented
-	app.Post("/api/user/comment", controllers.UserCreateComment)  //not implemented
+	app.Post("/api/user/allFood", controllers.UserGetAllFood)
+	app.Get("/api/user/getOrders/:id", controllers.UserGetOrders)
+	app.Post("/api/user/order", controllers.UserCreateOrder)
+	app.Post("/api/user/history", controllers.UserGetHistory)
+	app.Post("/api/user/favorites", controllers.UserGetFavorites)
+	app.Post("/api/user/comment", controllers.UserCreateComment)
 
 }

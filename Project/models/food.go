@@ -8,6 +8,6 @@ type Food struct {
 	Price        string `gorm:"not null" json:"price,omitempty"`
 	Ready        bool   `json:"isReady,omitempty"`
 	Rate         int    `json:"rate,omitempty"`
-	RestaurantID int    `gorm:"primaryKey" json:"restaurantID,omitempty"`
+	RestaurantID int    `gorm:"primaryKey;not null" json:"restaurantID,omitempty"`
 	gorm.Model
 }

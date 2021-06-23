@@ -10,6 +10,7 @@ type Restaurant struct {
 	Balance        float64 `json:"balance,omitempty"`
 	ManagerID      int     `gorm:"primaryKey; not null" json:"managerID,omitempty"`
 	//Food           []Food  `gorm:"foreignKey:RestaurantID;references:ID" json:"food,omitempty"`
-	Food []Food `gorm:"foreignKey:ID;references:ID" json:"food,omitempty"`
+	//Food []Food `gorm:"foreignKey:RestaurantID; references:ID" json:"food,omitempty"`
+	Food []Food `gorm:"foreignKey:ID; references:ID" json:"food,omitempty"`
 	gorm.Model
 }
