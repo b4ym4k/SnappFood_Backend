@@ -4,4 +4,14 @@
 # Todo
 - [X] Add Kian & Ehsan to the project
 - [X] Authentication & authorization
+- [X] Validation
+- [X] User Controller
+- [X] Manager Controller
+- [ ]  Order Controller
 - [ ] Finish
+## Contributors
+-  [Kamyab abedi](https://github.com/Kamyababedi)
+-  [Ehsan Sajadi](https://github.com/ehsansajadi)
+-  [Kian Jalilian](https://github.com/kianjalilian)
+## License
+MIT License, Copyright (c) 2021 Kamyab Abedi (and the gang!)
