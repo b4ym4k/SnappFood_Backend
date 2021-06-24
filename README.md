@@ -1,6 +1,7 @@
 # SnappFood_Backend
 • Restful APIs for Food Delivery application developed using Golang.<br>
-• Project of Internet Engineering Course, Dr. Parham Alvani, Shahid Beheshti University.
+• Project of Internet Engineering Course, Dr. Parham Alvani, Shahid Beheshti University.<br>
+• The frontend of this project is available [here](https://github.com/KamyabAbedi/SnappFood_Frontend).
 # Todo
 - [X] Add Kian & Ehsan to the project
 - [X] Authentication & authorization
